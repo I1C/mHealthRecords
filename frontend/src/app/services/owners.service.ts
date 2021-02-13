@@ -15,17 +15,29 @@ export class OwnersService {
 
   constructor(private http: HttpClient) { }
 
-  // getTable(): Observable<any> {
-  //   let bid: any = [];
-  //   axios.get( API_BASE_URL + 'getByJoin', {
-  //     headers: { 'x-auth-token': `${localStorage.getItem('token')}` },
-  //   }).then((res: any) => {
-  //     console.log(res);
-  //     bid = res.data;
-  //     this.subject.next(bid);
-  //   });
-  //   return this.subject.asObservable();
-  // }
+  getAuth(): Observable<any> {
+    let url: any;
+    axios.get( API_BASE_URL + 'getURLAuth', {
+      headers: { 'x-auth-token': `${localStorage.getItem('token')}` },
+    }).then((res: any) => {
+      console.log(res);
+      url = res.data;
+      this.subject.next(url);
+    });
+    return this.subject.asObservable();
+  }
+
+  getHearthRate(): Observable<any> {
+    let url: any;
+    axios.get( API_BASE_URL + 'heart_rate', {
+      headers: { 'x-auth-token': `${localStorage.getItem('token')}` },
+    }).then((res: any) => {
+      console.log(res);
+      url = res.data;
+      this.subject.next(url);
+    });
+    return this.subject.asObservable();
+  }
 
   // tslint:disable-next-line:typedef
   sendEmail(url: any, data: any){
