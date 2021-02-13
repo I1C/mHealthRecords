@@ -1,0 +1,42 @@
+<div class="content-body">
+  <mat-card>
+      <mat-card-content>
+          <div class="header">
+              <h2>LOGIN</h2>
+          </div>
+          <form (ngSubmit)="onLogin()" name="loginForm" [formGroup]="loginForm">
+              <div class="email-input">
+                  <mat-form-field class="full-width">
+                      <mat-label>Email</mat-label>
+                      <input formControlName="email" [(ngModel)]="email" matInput required/>
+                      <mat-error *ngIf="loginForm.get('email')">
+                          Required email address
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+              <div>
+                  <mat-form-field class="full-width">
+                      <mat-label>Password</mat-label>
+                      <input formControlName="password" [(ngModel)]="password" matInput [type] = "hide ? 'text' : 'password'" required/>
+                      <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide Password'" type="button" [attr.aria-pressed]="hide">
+                          <mat-icon>{{hide ? 'visibility' : 'visibility_off' }}</mat-icon>
+                      </button>
+                      <mat-error *ngIf="loginForm.get('password')">
+                          Requires password with at least 6 characters
+                      </mat-error>
+                  </mat-form-field>
+              </div>
+              <div>
+                  <button mat-flat-button color="primary" class="button">Login</button>
+              </div>
+              <div>
+                  <a mat-button color="primary" class="button" routerLink="">Forgot Password?</a>
+              </div>
+              <div>
+                  <a mat-button color="primary" class="button" routerLink="register">You do not have an account?</a>
+              </div>
+          </form>
+      </mat-card-content>
+  </mat-card>
+  </div>
+

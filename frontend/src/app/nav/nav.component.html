@@ -1,0 +1,41 @@
+<mat-toolbar color="primary" class="mat-elevation-z7">
+    <a mat-button class="title" routerLink = "home">
+        <span>
+            <mat-icon class="logo">health_and_safety</mat-icon>
+        </span>
+        mHealthRecords
+    </a>
+
+    <div class="spacer"></div>
+
+    <a *ngIf="isLoggedIn" mat-button class="userDetails" routerLink="home">
+        <div class="d-image" [ngSwitch]="image">
+            <span *ngSwitchDefault>
+                <mat-icon>account_circle</mat-icon>
+            </span>
+            <img *ngSwitchCase="'userImage'" class="userImage" [src]="userImageLink">
+        </div>
+        <div class="d-name" [ngSwitch]="name" >
+            <span *ngSwitchCase="'userName'" class="userName">Ioan</span>
+            <span *ngSwitchDefault class="userNameLogin">Login</span>
+        </div>
+    </a>
+
+    <a *ngIf="!isLoggedIn" mat-button class="userDetails" routerLink="home">
+      <div class="d-image" [ngSwitch]="image">
+          <span *ngSwitchDefault>
+              <mat-icon>account_circle</mat-icon>
+          </span>
+          <img *ngSwitchCase="'userImage'" class="userImage" [src]="userImageLink">
+      </div>
+      <div class="d-name2" [ngSwitch]="name" >
+          <span *ngSwitchCase="'userName'" class="userName">Ioan</span>
+          <span *ngSwitchDefault class="userNameLogin">Login</span>
+      </div>
+  </a>
+
+    <a *ngIf="isLoggedIn" mat-button routerLink = "" (click)="getLogout()">Logout</a>
+</mat-toolbar>
+
+
+
