@@ -1,0 +1,45 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+.logo {
+  margin-top: 10px;
+}
+
+// .title {
+//   margin-top: 7px;
+// }
+
+.userImage {
+  width: 40px;
+  clip-path: circle();
+}
+
+.userName {
+  font-size: 12px;
+  align-items: center;
+}
+
+.userNameLogin {
+  font-size: 12px;
+  align-items: center;
+  padding-top: 10px;
+}
+
+.userDetails {
+  cursor: pointer;
+}
+
+.d-image {
+  padding-top: 3px;
+  text-align: center;
+  margin-bottom: 7px;
+}
+.d-name {
+  text-align: center;
+  margin-top: -40px;
+}
+.d-name2 {
+  text-align: center;
+  margin-top: -30px;
+}
