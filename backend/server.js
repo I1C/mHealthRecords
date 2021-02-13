@@ -86,10 +86,10 @@ app.get("/getURLAuth", (req, res) => {
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
         //link to redirect to
-        "http://localhost:5000/heart_rate"
+        "http://localhost:5000/sleep"
     );
 
-    const scopes = ["https://www.googleapis.com/auth/fitness.heart_rate.read profile email openid"]
+    const scopes = ["https://www.googleapis.com/auth/fitness.sleep.read profile email openid"]
 
     const url = oauth2Client.generateAuthUrl({
         access_type: "offline",
@@ -164,6 +164,136 @@ app.get("/heart_rate", async (req, res) => {
                 console.log(points);
                 for (const heart of points.point) {
                     console.log(heart.value);
+                }
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
+})
+
+app.get("/blood_pressure", async (req, res) => {
+
+    const queryURL = new urlParse(req.url);
+    const code = queryParse.parse(queryURL.query).code;
+
+    const oauth2Client = new google.auth.OAuth2(
+        process.env.CLIENT_ID,
+        process.env.CLIENT_SECRET,
+        //link to redirect to
+        "http://localhost:5000/blood_pressure"
+    );
+
+    const tokens = await oauth2Client.getToken(code);
+
+    // console.log("Tokens: ", tokens);
+
+    console.log(code);
+
+    res.send("HELLO");
+
+    let heartArray = [];
+
+    try {
+        const result = await axios({
+            method: "POST",
+            headers: {
+                authorization: "Bearer " + tokens.tokens.access_token
+            },
+            "Content-Type": "application/json",
+            url: `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`,
+            data: {
+                aggregateBy: [
+                    {
+                        dataTypeName: "com.google.blood_pressure",
+                        // dataStreamId: "derived: com.google.blood_pressure: com.google.android.gms: merged",
+                    },
+                ],
+                bucketByTime: { durationMillis: 86400000 },
+                startTimeMillis: 1612043999000,
+                endTimeMillis: 1612130399000,
+            },
+        });
+
+        console.log(result);
+        bloodArray = result.data.bucket;
+
+    } catch (e) {
+        console.log(e);
+    }
+
+    try {
+        for (const dataSet of bloodArray) {
+            console.log(dataSet);
+            for (const points of dataSet.dataset) {
+                console.log(points);
+                for (const blood of points.point) {
+                    console.log(blood.value);
+                }
+            }
+        }
+    } catch (e) {
+        console.log(e);
+    }
+})
+
+app.get("/sleep", async (req, res) => {
+
+    const queryURL = new urlParse(req.url);
+    const code = queryParse.parse(queryURL.query).code;
+
+    const oauth2Client = new google.auth.OAuth2(
+        process.env.CLIENT_ID,
+        process.env.CLIENT_SECRET,
+        //link to redirect to
+        "http://localhost:5000/sleep"
+    );
+
+    const tokens = await oauth2Client.getToken(code);
+
+    // console.log("Tokens: ", tokens);
+
+    console.log(code);
+
+    res.send("HELLO");
+
+    let heartArray = [];
+
+    try {
+        const result = await axios({
+            method: "POST",
+            headers: {
+                authorization: "Bearer " + tokens.tokens.access_token
+            },
+            "Content-Type": "application/json",
+            url: `https://www.googleapis.com/fitness/v1/users/me/dataset:aggregate`,
+            data: {
+                aggregateBy: [
+                    {
+                        dataTypeName: "com.google.sleep.segment",
+                        // dataStreamId: "derived: com.google.blood_pressure: com.google.android.gms: merged",
+                    },
+                ],
+                bucketByTime: { durationMillis: 86400000 },
+                startTimeMillis: 1613210400000,
+                endTimeMillis: 1613235359000,
+            },
+        });
+
+        console.log(result);
+        sleepArray = result.data.bucket;
+
+    } catch (e) {
+        console.log(e);
+    }
+
+    try {
+        for (const dataSet of sleepArray) {
+            console.log(dataSet);
+            for (const points of dataSet.dataset) {
+                console.log(points);
+                for (const sleep of points.point) {
+                    console.log(sleep.value);
                 }
             }
         }
