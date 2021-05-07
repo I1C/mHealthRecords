@@ -1,0 +1,45 @@
+{
+    "resourceType": "Patient",
+    "id": "2082990",
+    "meta": {
+        "versionId": "1",
+        "lastUpdated": "2021-05-07T12:47:56.160+00:00"
+    },
+    "text": {
+        "status": "generated",
+        "div": "<div xmlns=\"http://www.w3.org/1999/xhtml\"><div class=\"hapiHeaderText\">Ioan <b>COMAN </b></div><table class=\"hapiPropertyTable\"><tbody><tr><td>Address</td><td><span>204, Splaiul Independentei </span><br/><span>Bucharest </span><span>District 6 </span><span>Romania </span></td></tr><tr><td>Date of birth</td><td><span>25 May 1995</span></td></tr></tbody></table></div>"
+    },
+    "name": [
+        {
+            "use": "official",
+            "family": "Coman",
+            "given": [
+                "Ioan"
+            ]
+        }
+    ],
+    "telecom": [
+        {
+            "system": "phone",
+            "value": "0773889233",
+            "use": "mobile"
+        },
+        {
+            "system": "email",
+            "value": "coman.ioan95@gmail.com"
+        }
+    ],
+    "gender": "male",
+    "birthDate": "1995-05-25",
+    "address": [
+        {
+            "line": [
+                "204, Splaiul Independentei"
+            ],
+            "city": "Bucharest",
+            "state": "District 6",
+            "postalCode": "060024",
+            "country": "Romania"
+        }
+    ]
+}

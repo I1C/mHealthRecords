@@ -1,0 +1,28 @@
+{
+    "resourceType": "Observation",
+    "id": "2083204",
+    "meta": {
+        "versionId": "1",
+        "lastUpdated": "2021-05-07T13:51:11.400+00:00"
+    },
+    "status": "final",
+    "code": {
+        "coding": [
+            {
+                "system": "https://www.google.com/fit/",
+                "code": "Samsung A40",
+                "display": "Glucose [Moles/volume] in Blood"
+            }
+        ]
+    },
+    "subject": {
+        "reference": "Patient/2082990",
+        "display": "Ioan Coman"
+    },
+    "valueQuantity": {
+        "value": 7.3,
+        "unit": "mmol/l",
+        "system": "http://unitsofmeasure.org",
+        "code": "mmol/L"
+    }
+}
