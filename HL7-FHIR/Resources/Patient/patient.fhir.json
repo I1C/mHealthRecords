@@ -1,0 +1,34 @@
+{
+    "resourceType": "Patient",
+    "name": [
+        {
+            "use": "official",
+            "given": ["Ioan"],
+            "family": "Coman"
+        }
+    ],
+    "gender": "male",
+    "birthDate": "1995-05-25",
+    "telecom": [
+        {
+            "value": "0773889233",
+            "use": "mobile",
+            "system": "phone"
+        },
+        {
+            "system": "email",
+            "value": "coman.ioan95@gmail.com"
+        }
+    ],
+    "address": [
+        {
+            "line": [
+                "204, Splaiul Independentei"
+            ],
+            "city": "Bucharest",
+            "state": "District 6",
+            "country": "Romania",
+            "postalCode": "060024"
+        }
+    ]
+}

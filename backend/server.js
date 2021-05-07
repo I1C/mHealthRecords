@@ -86,10 +86,10 @@ app.get("/getURLAuth", (req, res) => {
         process.env.CLIENT_ID,
         process.env.CLIENT_SECRET,
         //link to redirect to
-        "http://localhost:5000/sleep"
+        "http://localhost:5000/heart_rate"
     );
 
-    const scopes = ["https://www.googleapis.com/auth/fitness.sleep.read profile email openid"]
+    const scopes = ["https://www.googleapis.com/auth/fitness.heart_rate.read profile email openid"]
 
     const url = oauth2Client.generateAuthUrl({
         access_type: "offline",
