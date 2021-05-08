@@ -1,0 +1,44 @@
+{
+    "resourceType":"Bundle",
+    "type":"transaction",
+    "entry": [
+        {
+            "fullUrl": "urn:uuid:patient",
+            "resource": {
+                "resourceType": "Patient",
+                "name": [
+                    {
+                        "given": [
+                            "testPatient"
+                        ]
+                    }
+                ]
+            },
+            "request": {
+                "method": "POST",
+                "url": "Patient"
+            }
+        },
+        {
+            "resource":{
+                "resourceType": "Observation",
+                "code": {
+                    "coding": [
+                        {
+                            "code": "randomObservation",
+                            "system": "randomSystem",
+                            "display": "Random Observation for Patient testPatient"
+                        }
+                    ]
+                },
+                "subject": {
+                    "type": "Patient",
+                    "reference": "urn:uuid:patient"
+                }
+            },
+            "request": {
+                "method": "POST"
+            }
+        }
+    ]
+}
